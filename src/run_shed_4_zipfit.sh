@@ -46,8 +46,9 @@ for dir in "workspace" "output" "final_dataset"; do
 done
 
 # Step 1: Run clustering
-echo "Step 1: Run clustering, Clustering the original dataset..."
+echo "-- Step 1: Run clustering, Clustering the original dataset..."
 python cluster_sen_tran.py "${ORIGINAL_DATASET}" "${NUMBER_OF_CLUSTERS}" || exit 1
+
 python txt_json.py ${NUMBER_OF_CLUSTERS} || exit 1
 
 # Step 2: Run iteration_shapley.sh
