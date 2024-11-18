@@ -2,7 +2,7 @@
 import requests
 import os
 
-def download_jsonl(url, save_path): 
+def download_jsonl(url, save_path):
     """
     Downloads a JSONL file from a URL and saves it locally.
 

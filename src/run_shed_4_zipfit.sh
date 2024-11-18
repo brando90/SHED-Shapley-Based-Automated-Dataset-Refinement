@@ -48,6 +48,7 @@ done
 # Step 1: Run clustering
 echo -e "\n-- Step 1: Run clustering, Clustering the original dataset... (bash)"
 python cluster_sen_tran.py "${ORIGINAL_DATASET}" "${NUMBER_OF_CLUSTERS}" || exit 1
+
 python txt_json.py ${NUMBER_OF_CLUSTERS} || exit 1
 
 # Step 2: Run finetune_fixseed etc. to Preparing for Shapley value calculation
