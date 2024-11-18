@@ -33,7 +33,7 @@ python cluster_sen_tran.py ${ORIGINAL_DATASET} ${Number_of_clusters}
 python txt_json.py 
 
 
-# Step 2: Run iteration_shapley.sh to prepare for Shapley value calculation
+# Step 2: Run it to prepare for Shapley value calculation
 echo "Preparing for Shapley value calculation..."
 # If target on other tasks, pls use the corresponding eval set (dev_data) and modify the eval part of finetune_fixseed.py
 for i in {1..20}; do
