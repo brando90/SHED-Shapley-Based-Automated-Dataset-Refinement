@@ -2,16 +2,16 @@
 
 # Define parameters as environment variables for easy modification
 # Small values for debugging
-export NUMBER_OF_CLUSTERS=10       # Small number of clusters (original: 3000)
-export NUMBER_OF_FINALSET=20       # Small final dataset size (original: 5000)
+export NUMBER_OF_CLUSTERS=12       # Small number of clusters (original: 3000)
+export NUMBER_OF_FINALSET=13       # Small final dataset size (original: 5000)
 export OUTER_LOOP_LIMIT=2          # Small number of outer loop iterations (original: 20)
 export INNER_LOOP_LIMIT=5          # Small number of inner loop iterations (original: 50)
-export BATCH_SIZE=16               # Reduced batch size for debugging (original: 128)
+export BATCH_SIZE=8               # Reduced batch size for debugging (original: 128)
 export CUT_OFF_LEN=256             # Reduced token cutoff length for faster processing (original: 1024)
 export NUM_EPOCHS=1                # Fewer epochs for debugging (original: 3)
 export OUT_NUM=5                   # Smaller random output samples (original: 60)
-export LORA_R=4                    # Small value for LoRA rank (original: 128)
-export LORA_ALPHA=4                # Small value for LoRA alpha (original: 256)
+export LORA_R=2                    # Small value for LoRA rank (original: 128)
+export LORA_ALPHA=2                # Small value for LoRA alpha (original: 256)
 
 # Large original values (commented for reference)
 # export NUMBER_OF_CLUSTERS=3000
@@ -46,7 +46,7 @@ for dir in "workspace" "output" "final_dataset"; do
 done
 
 # Step 1: Run clustering
-echo "Clustering the original dataset..."
+echo "Step 1: Run clustering, Clustering the original dataset..."
 python cluster_sen_tran.py "${ORIGINAL_DATASET}" "${NUMBER_OF_CLUSTERS}" || exit 1
 python txt_json.py ${NUMBER_OF_CLUSTERS} || exit 1
 

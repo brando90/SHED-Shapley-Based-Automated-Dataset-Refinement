@@ -11,9 +11,12 @@ The scripts in the project have been integrated into the run.sh script, which ha
 The base model we use is llama-7b, ensure that you have sufficient computational resources to run the models, especially during the Shapley value calculation and model fine-tuning steps.
 The path and format of the original dataset must comply with the scripts' requirements.
 
-## Install & Clone
-
+## Install & Clone our Shed repo & Nvhtop
 ```bash
+# Nvhtop 
+pip3 install nvidia-htop
+alias nvhtop='nvidia-htop.py --color -l 100'
+
 # Clone
 cd ~
 git clone git@github.com:brando90/SHED-Shapley-Based-Automated-Dataset-Refinement.git
@@ -29,8 +32,16 @@ conda activate shed
 pip install -e ~/SHED-Shapley-Based-Automated-Dataset-Refinement
 ```
 
-## Run SHED on our ZIP-FIT code data set
+## Download our src code data & put it into SHED format
+```bash
+# download raw jsonl file from hf (elyas had a bug so it has to be the jsonl raw file)
+python ~/SHED-Shapley-Based-Automated-Dataset-Refinement/experiments/2024/11_nov/download_zipfit_data_jsonl_src_ds.py
+# convert jsonl file to json format for SHED
+python ~/SHED-Shapley-Based-Automated-Dataset-Refinement/experiments/2024/11_nov/transform_src_ds_from_jsonl_to_json.py
+```
 
+## Run SHED on our ZIP-FIT code data set
+To run BM's shed, run the cmds bellow: 
 ```bash
 conda activate shed
 cd ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src

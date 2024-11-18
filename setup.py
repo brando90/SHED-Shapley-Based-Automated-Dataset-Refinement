@@ -89,6 +89,7 @@ setup(
         "transformers",
         "requests",
         'sentence-transformers',
+        'nvidia-htop',
     ]
 
     # for pytorch see doc string at the top of file

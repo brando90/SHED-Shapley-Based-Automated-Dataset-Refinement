@@ -9,13 +9,17 @@ import sys
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from sklearn.metrics import pairwise_distances_argmin_min
+
 def main():
+    print(f"--- Running (within python): {os.path.abspath(__file__)}")
     data_path = str(sys.argv[1])
     num_clusters = int(sys.argv[2])
+    print(f'{data_path=}')
+    print(f'{num_clusters=}')
+
     embedder = SentenceTransformer('all-MiniLM-L6-v2')
     corpus=[]
 
-    print(f'----\n{data_path=}')
     f=open(data_path)
     jsonObect=json.load(f)
     for i in jsonObect:
