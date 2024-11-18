@@ -15,6 +15,7 @@ def main():
     embedder = SentenceTransformer('all-MiniLM-L6-v2')
     corpus=[]
 
+    print(f'----\n{data_path=}')
     f=open(data_path)
     jsonObect=json.load(f)
     for i in jsonObect:
@@ -34,13 +35,13 @@ def main():
 
     for i, cluster in enumerate(clustered_sentences):
         print("Cluster ", i+1)
-        file = open("/workspace/cluster_"+str(num_clusters)+"_"+str(i)+".txt",'a',encoding="utf-8")
+        file = open("./workspace/cluster_"+str(num_clusters)+"_"+str(i)+".txt",'a',encoding="utf-8")
         for j in range(len(cluster)):
             file.write(cluster[j]+"\n")
 
 
     closest, _ = pairwise_distances_argmin_min(clustering_model.cluster_centers_, corpus_embeddings)
-    file = open("/workspace/cluster_center_"+str(num_clusters)+".txt", 'a',encoding="utf-8")
+    file = open("./workspace/cluster_center_"+str(num_clusters)+".txt", 'a',encoding="utf-8")
     for j in range(len(closest)):
         file.write(corpus[closest[j]]+"\n")
 

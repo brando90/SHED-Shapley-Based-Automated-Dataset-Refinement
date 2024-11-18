@@ -11,3 +11,4 @@ git+https://github.com/huggingface/transformers.git
 sentencepiece
 gradio
 sentencepiece
+sentence-transformers
