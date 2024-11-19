@@ -51,5 +51,5 @@ To run BM's shed, run the cmds bellow:
 ```bash
 conda activate shed
 cd ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src
-bash ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src/run_shed_4_zipfit.sh
+time bash ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src/run_shed_4_zipfit.sh
 ```

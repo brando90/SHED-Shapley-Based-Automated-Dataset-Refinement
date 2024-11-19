@@ -25,10 +25,11 @@ def main():
     # Initialize the sentence transformer model for embedding generation
     print("\nStart: Initializing the sentence transformer model for embedding generation")
     embedder = SentenceTransformer('all-MiniLM-L6-v2')
+    print(f'{embedder.device=}')
     print("Done: Initializing the sentence transformer model for embedding generation")
     
     # Load data from the JSON file and extract the text corpus
-    print("\nnStart: Loading data from the JSON file and extracting the text corpus")
+    print("\nStart: Loading data from the JSON file and extracting the text corpus")
     corpus = []
     with open(data_path) as f:
         json_object = json.load(f)
@@ -37,8 +38,9 @@ def main():
     print("Done: Loading data from the JSON file and extracting the text corpus")
     
     # Generate embeddings for the corpus
-    print("\nnStart: Generating embeddings for the corpus")
-    corpus_embeddings = embedder.encode(corpus)
+    print("\nStart: Generating embeddings for the corpus")
+    # corpus_embeddings = embedder.encode(corpus)
+    corpus_embeddings = embedder.encode(corpus, show_progress_bar=True)
     print("Done: Generating embeddings for the corpus")
     
     # Perform KMeans clustering on the embeddings
@@ -49,7 +51,7 @@ def main():
     print("Done: Start: Performing KMeans clustering on the embeddings")
     
     # Group sentences by their assigned clusters
-    print("\nGrouping sentences by their assigned clusters")
+    print("\nStart: Grouping sentences by their assigned clusters")
     clustered_sentences = [[] for _ in range(num_clusters)]
     for sentence_id, cluster_id in enumerate(cluster_assignment):
         clustered_sentences[cluster_id].append(corpus[sentence_id])
