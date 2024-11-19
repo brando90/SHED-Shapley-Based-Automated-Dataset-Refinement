@@ -49,7 +49,11 @@ python ~/SHED-Shapley-Based-Automated-Dataset-Refinement/experiments/2024/11_nov
 ## Run SHED on our ZIP-FIT code data set
 To run BM's shed, run the cmds bellow: 
 ```bash
+
+# Run BM SHED code
+export CUDA_VISIBLE_DEVICES=8
 conda activate shed
 cd ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src
 time bash ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src/run_shed_4_zipfit.sh
+
 ```
