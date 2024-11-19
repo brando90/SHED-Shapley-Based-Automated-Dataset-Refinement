@@ -24,6 +24,9 @@ from transformers import GenerationConfig, LlamaForCausalLM, LlamaTokenizer, Aut
 
 from utils.prompter import Prompter
 from transformers import set_seed
+
+from pdb import set_trace as st
+
 set_seed(42)
 
 torch.manual_seed(42)
@@ -78,6 +81,7 @@ def train(
     resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
     prompt_template_name: str = "vicuna",  # The prompt template to use, will default to alpaca.
 ):
+    print('\n--> Starting train...')
     if int(os.environ.get("LOCAL_RANK", 0)) == 0:
         print(
             f"Training Alpaca-LoRA model with params:\n"
@@ -103,6 +107,7 @@ def train(
             f"resume_from_checkpoint: {resume_from_checkpoint or False}\n"
             f"prompt template: {prompt_template_name}\n"
         )
+    print(f'{data_path=}')
     assert (
         base_model
     ), "Please specify a --base_model, e.g. --base_model='huggyllama/llama-7b'"
@@ -207,8 +212,10 @@ def train(
         )
         model = get_peft_model(model, config)
 
+    print(f'{data_path=}')
     if data_path.endswith(".json") or data_path.endswith(".jsonl"):
-        data = load_dataset("json", data_files=data_path,cache_dir="path/to/cache")
+        # data = load_dataset("json", data_files=data_path, cache_dir="path/to/cache")
+        data = load_dataset("json", data_files=os.path.abspath(data_path), cache_dir="path/to/cache")
     else:
         data = load_dataset(data_path,cache_dir="path/to/cache")
 

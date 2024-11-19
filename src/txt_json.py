@@ -1,8 +1,11 @@
 import json
 import sys
 
+print('txt_json.py')
+
 # Use the number of clusters from the command-line argument
 num_clusters = sys.argv[1]  # e.g., "10"
+print(f'{num_clusters=}')
 
 obj_temp=[]
 with open(f"./workspace/cluster_center_{num_clusters}.txt", "r+", encoding="utf-8") as ori:
