@@ -22,7 +22,7 @@ def convert_jsonl_to_json(jsonl_path, output_path, end = sys.maxsize):
                 else:
                     data.append(json.loads(line))
         print(f'{len(data)=}')
-        print(data)
+        # print(data)
         
         print(f'{output_path=}')
         with open(output_path, 'w', encoding='utf-8') as outfile:
