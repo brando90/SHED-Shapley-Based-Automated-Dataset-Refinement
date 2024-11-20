@@ -51,7 +51,8 @@ To run BM's shed, run the cmds bellow:
 ```bash
 
 # Run BM SHED code
-export CUDA_VISIBLE_DEVICES=8
+export CUDA_VISIBLE_DEVICES=6
+conda activate shed
 conda activate shed
 cd ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src
 time bash ~/SHED-Shapley-Based-Automated-Dataset-Refinement/src/run_shed_4_zipfit.sh
