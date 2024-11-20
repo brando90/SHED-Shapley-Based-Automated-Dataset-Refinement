@@ -22,6 +22,7 @@ alias nvhtop='nvidia-htop.py --color -l 100'
 cd ~
 git clone git@github.com:brando90/SHED-Shapley-Based-Automated-Dataset-Refinement.git
 # Add shed remote, fetch & merge with our fork
+git remote -v
 git remote add upstream https://github.com/Lucidreamer9/SHED-Shapley-Based-Automated-Dataset-Refinement.git
 git fetch upstream
 git merge upstream/main

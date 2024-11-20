@@ -48,9 +48,12 @@ done
 # Step 1: Run clustering
 echo -e "\n-- Step 1: Run clustering, Clustering the original dataset... (bash)"
 python cluster_sen_tran.py "${ORIGINAL_DATASET}" "${NUMBER_OF_CLUSTERS}" || exit 1
-
 python txt_json.py ${NUMBER_OF_CLUSTERS} || exit 1
 
+echo "Creating copies of the cluster center json file..."
+for i in {1..20}; do
+    cp "./workspace/cluster_center_${NUMBER_OF_CLUSTERS}.json" "./workspace/cluster_center_${NUMBER_OF_CLUSTERS}_${i}.json"
+done
 # Step 2: Run finetune_fixseed etc. to Preparing for Shapley value calculation
 echo -e "Step2: Run, Preparing for Shapley value calculation..."
 for i in $(seq 1 $OUTER_LOOP_LIMIT); do
