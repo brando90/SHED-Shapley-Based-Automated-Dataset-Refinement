@@ -58,9 +58,12 @@ for i in $(seq 1 $OUTER_LOOP_LIMIT); do
   count_fine_path="./workspace/count_file_${NUMBER_OF_CLUSTERS}_${i}.txt"
   temp_save_filepath="./workspace/randomout_${NUMBER_OF_CLUSTERS}_${i}.json"
 
+  export base_model="yahma/llama-7b-hf"
+  export base_model="openai-community/gpt2-xl"
+  export base_model="openai-community/gpt2"
   for j in $(seq 1 $INNER_LOOP_LIMIT); do
     python -u finetune_fixseed.py \
-      --base_model yahma/llama-7b-hf \
+      --base_model ${base_model} \
       --batch_size $BATCH_SIZE \
       --cutoff_len $CUT_OFF_LEN \
       --micro_batch_size 8 \
