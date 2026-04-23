@@ -163,4 +163,4 @@ cython_debug/
 tmp/
 
 workspace/
-path/
+path/src/workspace/
